@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<!-- ONE LINE TO EDIT: the address of the FireCAD licence server. The "Start free 7-day trial" and "Subscribe" buttons are
+     written as short links (trial, subscribe) and follow this line, so a new address is changed here and nowhere else.
+     Keep the https:// and the slash on the end, e.g. https://firecad-licence.firecad.workers.dev/ (docs/wix-buttons.md explains). -->
+<base href="https://firecad-licence.firecad.workers.dev/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://api.github.com; img-src data:; base-uri https:; form-action 'none'">
+<meta name="description" content="FireCAD for Windows: fire alarm and security drawing software. Start a free 7-day trial, subscribe for 80 pounds + VAT a month, or download it. Installs in seconds, no administrator rights.">
+<meta name="color-scheme" content="light dark">
+<title>FireCAD for Windows: free trial and download</title>
+<style>
+  /* The FireCAD look: the same red, greys and radii as the program (cadapp/ui/theme.py), light and dark. */
+  :root {
+    --window: #f1f3f5; --surface: #ffffff; --border: #d6dae0; --text: #1b1f24; --muted: #586170;
+    --accent: #c62828; --accent-hover: #d23535; --accent-pressed: #a51f1f; --accent-text: #b3201f; --accent-soft: #f7e1e1;
+    --on-accent: #ffffff; --focus: #1769c8; --warn-bg: #fff4e0; --warn-border: #d98e1f; --warn-text: #3d2600;
+    --radius: 8px; --shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 4px 14px rgba(0, 0, 0, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --window: #1a1d22; --surface: #23272d; --border: #343a42; --text: #e7eaef; --muted: #a1a9b4;
+      --accent: #c93636; --accent-hover: #d03d3d; --accent-pressed: #b02b2b; --accent-text: #ff7b7b; --accent-soft: #3a2528;
+      --focus: #5aaeff; --warn-bg: #3a2d16; --warn-border: #d98e1f; --warn-text: #ffd9a0;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 4px 14px rgba(0, 0, 0, .3);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--window); color: var(--text);
+         font: 16px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif; }
+  a { color: var(--accent-text); }
+  a:focus-visible, summary:focus-visible, .button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  header.top { padding: 20px 0 0; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.25rem; letter-spacing: .01em; }
+  .brand svg { width: 40px; height: 40px; flex: none; }
+  h1, h2, p, li, summary { overflow-wrap: break-word; }
+  .hero { text-align: center; padding: 44px 0 36px; }
+  .hero h1 { margin: 0 0 10px; font-size: clamp(1.9rem, 5vw, 2.7rem); line-height: 1.15; }
+  .hero p.lead { margin: 0 auto 28px; max-width: 34em; color: var(--muted); font-size: 1.1rem; }
+  .button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 64px; padding: 0 36px;
+            background: var(--accent); color: var(--on-accent); font-size: 1.3rem; font-weight: 700; text-decoration: none;
+            border: 2px solid var(--accent-hover); border-radius: var(--radius); box-shadow: var(--shadow); max-width: 100%; }
+  .button:hover { background: var(--accent-hover); }
+  .button:active { background: var(--accent-pressed); }
+  .button svg { width: 26px; height: 26px; flex: none; }
+  .button.secondary { background: var(--surface); color: var(--accent-text); border-color: var(--accent); }
+  .button.secondary:hover { background: var(--accent-soft); }
+  .button.download { min-height: 52px; padding: 0 28px; font-size: 1.1rem; background: var(--surface); color: var(--text); border-color: var(--border); box-shadow: none; }
+  .button.download:hover { background: var(--window); }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .price { margin: 16px auto 0; max-width: 36em; color: var(--text); font-size: 1.05rem; }
+  .price small { display: block; color: var(--muted); font-size: .9rem; margin-top: 2px; }
+  .havekey { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .havekey p.ask { margin: 0 0 12px; font-weight: 600; }
+  .meta { margin: 12px 0 0; color: var(--muted); font-size: .95rem; min-height: 1.5em; }
+  .why { margin: 0 auto; max-width: 34em; color: var(--muted); font-size: .9rem; }
+  section { margin: 0 0 28px; }
+  h2 { margin: 0 0 14px; font-size: 1.35rem; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); }
+  ol.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 14px; }
+  ol.steps li { counter-increment: step; position: relative; padding-left: 52px; min-height: 40px; }
+  ol.steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%;
+                        background: var(--accent-soft); color: var(--accent-text); font-weight: 700; display: grid; place-items: center; }
+  ol.steps li > strong:first-child { display: block; }
+  .note { background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-text); border-radius: var(--radius);
+          padding: 10px 14px; margin-top: 10px; font-size: .95rem; }
+  .key { font-family: Consolas, "Cascadia Mono", monospace; background: var(--accent-soft); color: var(--accent-text);
+         padding: 1px 6px; border-radius: 4px; overflow-wrap: anywhere; }
+  ul.req, ul.ways { margin: 0; padding-left: 1.2em; }
+  ul.req li, ul.ways li { margin: 4px 0; }
+  details { border-top: 1px solid var(--border); padding: 12px 0; }
+  details:first-of-type { border-top: 0; padding-top: 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 8px 0 0; color: var(--text); }
+  code { font-family: Consolas, "Cascadia Mono", monospace; font-size: .92em; background: var(--window); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+  footer { padding: 8px 0 40px; color: var(--muted); font-size: .9rem; text-align: center; }
+  @media (max-width: 520px) { .hero { padding: 28px 0 24px; } .button { padding: 0 20px; font-size: 1.15rem; width: 100%; } .actions { flex-direction: column; } .card { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" role="img" aria-label="FireCAD flame badge">
+        <circle cx="50" cy="50" r="48" fill="#ffffff" stroke="#e00000" stroke-width="3"/>
+        <circle cx="50" cy="50" r="43" fill="#000000"/>
+        <path d="M47 14 C55 27 63 37 62 51 C61 65 54 77 46 90 C36 84 29 74 30 62 C32 45 45 33 47 14 Z" fill="#ffffff"/>
+        <path d="M64 37 C70 46 70 57 65 67 C62 74 59 80 56 88 C57 78 59 70 62 62 C65 54 64 46 64 37 Z" fill="#ffffff"/>
+        <path d="M73 52 C79 61 78 71 72 80 C70 83 67 86 64 88 C66 80 70 72 73 52 Z" fill="#ffffff"/>
+      </svg>
+      <span>FireCAD</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <h1 id="title">FireCAD for Windows</h1>
+      <p class="lead">Fire alarm and security drawings, made quicker. Try it free for 7 days: no card or bank details needed.</p>
+      <div class="actions">
+        <a class="button" id="trial" href="trial">Start free 7-day trial</a>
+        <a class="button secondary" id="subscribe" href="subscribe">Subscribe</a>
+      </div>
+      <p class="price" id="price"><strong>&pound;80 + VAT a month</strong> (&pound;96.00 a month with VAT), which includes 2 users and 2 computers.
+        <small>Paid by Direct Debit. For UK businesses.</small></p>
+
+      <div class="havekey">
+        <p class="ask">Already have a licence key? Download FireCAD:</p>
+        <a class="button download" id="download" href="https://github.com/FireCAD/firecad-releases/releases/latest/download/FireCAD-win-Setup.exe">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>
+          Download FireCAD for Windows
+        </a>
+        <p class="meta" id="version" aria-live="polite"></p>
+        <p class="why">Your browser can only save the installer; Windows then asks you to open it (step 2 below). No browser is allowed to start a program by itself.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="start-title">
+      <h2 id="start-title">Two ways to start</h2>
+      <div class="card">
+        <ul class="ways">
+          <li><strong>Free 7-day trial.</strong> Click <a href="trial">Start free 7-day trial</a>, type your name and email, and we email you a licence key and the download link straight away. It works on 1 PC for 7 days. No card or bank details are asked for, and you can only have one trial.</li>
+          <li><strong>Subscribe.</strong> Click <a href="subscribe">Subscribe</a> and set up a Direct Debit. Your licence key is shown on the next page (and emailed to you). &pound;80 + VAT a month, which includes 2 users and 2 computers.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="steps-title">
+      <h2 id="steps-title">What happens next</h2>
+      <div class="card">
+        <ol class="steps">
+          <li><strong>Download it.</strong> Click the red button. A file called <code>FireCAD-win-Setup.exe</code> (about 80 MB) is saved to your Downloads folder.</li>
+          <li><strong>Open it.</strong> Click the file in your browser's download bar, or double-click it in your Downloads folder.</li>
+          <li><strong>If Windows says &ldquo;Windows protected your PC&rdquo;,</strong> click <strong>More info</strong>, then <strong>Run anyway</strong>. This is normal for a program Windows has not seen much yet.
+            <div class="note">You only do this once. It is not a virus warning: FireCAD is simply not signed with a paid certificate yet.</div></li>
+          <li><strong>FireCAD installs and opens.</strong> It takes a few seconds and needs no administrator rights. When it asks for your licence key, type it in (it looks like <span class="key">FIRE-XXXXX-XXXXX-XXXXX-XXXXX</span>) and click <strong>Activate</strong>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="req-title">
+      <h2 id="req-title">What you need</h2>
+      <div class="card">
+        <ul class="req">
+          <li>Windows 10 or Windows 11, 64-bit.</li>
+          <li>A screen of at least 1280 x 720.</li>
+          <li>No administrator rights: it installs for your Windows user only.</li>
+          <li>About 200 MB of free disk space, and an internet connection to activate your key and to get updates.</li>
+          <li>A licence key: you get one from the free trial or when you subscribe (the buttons at the top of this page).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <div class="card">
+        <details>
+          <summary>Do I need Python or anything else installed first?</summary>
+          <p>No. Everything FireCAD needs is inside the installer.</p>
+        </details>
+        <details>
+          <summary>Where does it install?</summary>
+          <p>In your own user folder (<code>%LOCALAPPDATA%\FireCAD</code>), with a FireCAD shortcut in the Start menu. Nothing goes into Program Files, and nothing changes for other people who use the PC. Your settings and automatic backups live in <code>%APPDATA%\FireCAD</code>; your drawings are saved wherever you choose.</p>
+        </details>
+        <details>
+          <summary>How do I uninstall it?</summary>
+          <p>Windows <strong>Settings &gt; Apps &gt; Installed apps</strong>, find <strong>FireCAD</strong>, then <strong>Uninstall</strong>. Your drawings are never touched.</p>
+        </details>
+        <details>
+          <summary>How does it get updates?</summary>
+          <p>FireCAD checks for a newer version each time it opens and asks whether you want it. Installing an update takes a few seconds and keeps your settings and drawings.</p>
+        </details>
+        <details>
+          <summary>Windows or my antivirus shows a warning. What do I do?</summary>
+          <p>FireCAD is new and not yet signed with a paid publisher certificate, so Windows SmartScreen says &ldquo;Windows protected your PC&rdquo;. Click <strong>More info</strong>, then <strong>Run anyway</strong>. If your antivirus program quarantines the file, restore it and email us: a freshly built program is sometimes flagged by mistake and we can have it cleared. If your IT department manages your PC, ask them to allow <code>FireCAD-win-Setup.exe</code>.</p>
+        </details>
+        <details>
+          <summary>I do not have a licence key.</summary>
+          <p>FireCAD needs a licence key to activate. Click <a href="trial">Start free 7-day trial</a> at the top of this page for a key that works for 7 days, or <a href="subscribe">Subscribe</a> to get a key straight away. Prefer to ask? Email <a href="mailto:info@firecad.co.uk?subject=FireCAD%20licence%20key">info@firecad.co.uk</a>.</p>
+        </details>
+        <details>
+          <summary>What does the free trial include?</summary>
+          <p>All of FireCAD, on 1 PC, for 7 days. We do not ask for a card or bank details. When the 7 days are over FireCAD still opens and prints your drawings but you cannot edit them, until you <a href="subscribe">subscribe</a> (the same key keeps working, so you lose nothing). Each email address and each PC gets one trial.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>&pound;80 + VAT a month (&pound;96.00 a month with VAT at 20%), which includes 2 users and 2 computers. It is taken by Direct Debit through GoCardless. We send you a VAT invoice. We can only take UK customers for now.</p>
+        </details>
+        <details>
+          <summary>How do I stop paying?</summary>
+          <p>Cancel the Direct Debit with your bank at any time, or email <a href="mailto:info@firecad.co.uk">info@firecad.co.uk</a>. FireCAD keeps working to the end of the month you have paid for, then opens read-only: you can still open and print your drawings.</p>
+        </details>
+        <details>
+          <summary>Something went wrong.</summary>
+          <p>Email <a href="mailto:info@firecad.co.uk">info@firecad.co.uk</a> with what you did and what you saw. A screenshot helps.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    FireCAD &middot; <a href="mailto:info@firecad.co.uk">info@firecad.co.uk</a> &middot; Prices are for UK businesses and VAT is added at the standard rate.
+  </footer>
+</div>
+
+<script>
+/* Shows "Latest version 0.1.0" under the button, read live from GitHub. Fail-soft: if anything at all goes wrong
+   (offline, rate limit, odd reply) nothing is shown and the download button works exactly the same. */
+(function () {
+  try {
+    var el = document.getElementById("version");
+    if (!el || typeof fetch !== "function") { return; }
+    fetch("https://api.github.com/repos/FireCAD/firecad-releases/releases/latest", {
+      headers: { "Accept": "application/vnd.github+json" }
+    }).then(function (r) {
+      if (!r.ok) { throw new Error("no"); }
+      return r.json();
+    }).then(function (rel) {
+      var tag = rel && typeof rel.tag_name === "string" ? rel.tag_name.replace(/^v/i, "") : "";
+      if (!/^\d+(\.\d+){0,3}([-+.][0-9A-Za-z.]+)?$/.test(tag)) { return; }
+      var text = "Latest version: " + tag;
+      var when = rel.published_at ? new Date(rel.published_at) : null;
+      if (when && !isNaN(when.getTime())) {
+        text += " (" + when.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) + ")";
+      }
+      el.textContent = text;
+    }).catch(function () { /* show nothing */ });
+  } catch (e) { /* show nothing */ }
+})();
+</script>
+</body>
+</html>
